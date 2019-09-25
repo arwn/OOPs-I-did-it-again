@@ -9,7 +9,7 @@ public class MoveSouth implements GameCommand
     @Override
     public void run(Game game)
     {
-        if (game.hero().position.y < game.board().size)
+        if (game.hero().position.y < game.board().size - 1)
             game.movePlayer(new Point(0, 1));
         else
             game.restart();

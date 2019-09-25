@@ -10,23 +10,48 @@ public class Hero
 {
     public final String name;
     public final String profession;
-    public int experience;
+    protected int experience;
     public Point position = new Point(-1, -1);
-    private final int baseHealth = 10;
-    private final int baseBower = 10;
-    private final int baseArmor = 10;
-    private Armor armor;
-    private Weapon weapon;
-    private Helm helm;
+    private int healthMod = 0;
+    public Armor armor;
+    public Weapon weapon;
+    public Helm helm;
 
-    public Hero(final String name, final String profession)
+    protected Hero(final String name, final String profession)
     {
         this.name = name;
         this.profession = profession;
         this.experience = 0x0;
-        this.armor = new Armor("bare chest", 0);
-        this.weapon = new Weapon("bare fists", 0);
-        this.helm = new Helm("bare head", 0);
+        this.armor = new Armor("bare chest", 1);
+        this.weapon = new Weapon("bare fists", 1);
+        this.helm = new Helm("bare head", 10);
+    }
+
+    protected void takeDamage(int damage)
+    {
+        int realDamage;
+        if(damage - armor.armor <= 0 ) {
+            realDamage = 1;
+        } else {
+            realDamage = damage - armor.armor;
+        }
+        healthMod -= realDamage;
+    }
+
+    protected int calcDamage(int damage)
+    {
+        int realDamage;
+        if(damage - armor.armor <= 0 ) {
+            realDamage = 1;
+        } else {
+            realDamage = damage - armor.armor;
+        }
+        return realDamage;
+    }
+
+    protected boolean alive()
+    {
+        return helm.health + healthMod > 0;
     }
 
     public int level()
@@ -45,8 +70,13 @@ public class Hero
     }
 
     // moves hero to starting position
-    public void start(Board b)
+    protected void start(Board b)
     {
         this.position = new Point(b.size / 2, b.size / 2);
+    }
+
+    public int health()
+    {
+        return helm.health + healthMod;
     }
 }

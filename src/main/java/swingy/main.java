@@ -13,16 +13,21 @@ public class main
 
     public static void main(String []args)
     {
-        if (args.length != 1) {
-            new Game(new ConsoleView());
-        } else {
-            if (args[0].equals("gui")) {
-                new Game(new SwingView());
-            } else if (args[0].equals("cli")) {
+        try {
+            if (args.length != 1) {
                 new Game(new ConsoleView());
             } else {
-                die("Invalid args");
+                if (args[0].equals("gui")) {
+                    new Game(new SwingView());
+                } else if (args[0].equals("cli")) {
+                    new Game(new ConsoleView());
+                } else {
+                    die("Invalid args");
+                }
             }
+        } catch(Exception e) {
+            System.out.println("There is no internal end point, single goal, final Easter egg or \"You Win!\"\n"+
+                    "Eventually every player will fall. Your time is now.\nGAME OVER");
         }
     }
 }
