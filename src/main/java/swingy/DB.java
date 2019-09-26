@@ -87,6 +87,7 @@ public class DB
                     h.armor.name, h.armor.armor,
                     h.helm.name, h.helm.health,
                     h.weapon.name, h.weapon.power);
+            view.messageUser(sql);
         } else {
             sql = "UPDATE heroes SET \n" +
                     "experience = %d," +
