@@ -119,7 +119,8 @@ public class Game
 
             if (s.equals("f")) {
                 this.hero.takeDamage(e.power);
-                if (e.health <= hero.weapon.power) {
+                e.health -= hero.weapon.power;
+                if (e.health <= 0) {
                     view.messageUser("The enemy has died");
                     hero.experience += r.nextInt(e.power) * 10;
                     acquireLoot();
