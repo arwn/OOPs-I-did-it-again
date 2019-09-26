@@ -1,7 +1,7 @@
 package swingy.view;
 
-import swingy.Hero;
 import swingy.Board;
+import swingy.Hero;
 
 public interface GameView
 {
@@ -14,6 +14,7 @@ public interface GameView
     /**
      * This will be the basic way to prompt the user for input, will return a string when the user
      * sends data. Blocks until the user sends a message
+     *
      * @param prompt
      * @return
      */
@@ -21,18 +22,21 @@ public interface GameView
 
     /**
      * Similar to promptUser, however no response is expected
+     *
      * @param msg
      */
     void messageUser(String msg);
 
     /**
      * Updates the hero display, if there is one. May not be implemented on console
+     *
      * @param h
      */
     void updateHeroData(Hero h);
 
     /**
      * Updates the board display, may not be used every time on console.
+     *
      * @param m
      */
     void updateBoardData(Board m, Hero h);

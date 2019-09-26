@@ -22,6 +22,7 @@ public class Weapon
         this.power = power * r.nextInt(5);
         this.name = names[r.nextInt(names.length)];
     }
+
     public Weapon(String name, final int power)
     {
         Random r = new Random();

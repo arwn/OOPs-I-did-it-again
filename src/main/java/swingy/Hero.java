@@ -4,15 +4,21 @@ import swingy.equipment.Armor;
 import swingy.equipment.Helm;
 import swingy.equipment.Weapon;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.awt.*;
 
 public class Hero
 {
+    @Size(min = 3, max = 14, message = "must be a message of length 3-14")
+    @NotNull
     public final String name;
+    @Size(min = 3, max = 14, message = "must be a profession of length 3-14")
+    @NotNull
     public final String profession;
     protected int experience;
     public Point position = new Point(-1, -1);
-    private int healthMod = 0;
+    public int healthMod = 0;
     public Armor armor;
     public Weapon weapon;
     public Helm helm;
@@ -21,7 +27,7 @@ public class Hero
     {
         this.name = name;
         this.profession = profession;
-        this.experience = 0x0;
+        this.experience = 0;
         this.armor = new Armor("bare chest", 1);
         this.weapon = new Weapon("bare fists", 1);
         this.helm = new Helm("bare head", 10);
@@ -29,22 +35,19 @@ public class Hero
 
     protected void takeDamage(int damage)
     {
-        int realDamage;
-        if(damage - armor.armor <= 0 ) {
-            realDamage = 1;
-        } else {
-            realDamage = damage - armor.armor;
-        }
-        healthMod -= realDamage;
+        healthMod -= calcDamage(damage);
+    }
+
+    protected void heal(int health)
+    {
+        healthMod += health;
     }
 
     protected int calcDamage(int damage)
     {
-        int realDamage;
-        if(damage - armor.armor <= 0 ) {
+        int realDamage = damage - armor.armor;
+        if (realDamage <= 0) {
             realDamage = 1;
-        } else {
-            realDamage = damage - armor.armor;
         }
         return realDamage;
     }
@@ -59,7 +62,7 @@ public class Hero
         boolean found = false;
         int lvl = 1;
         do {
-            int needed = lvl * 1000 + (int)Math.pow(lvl - 1, 2) * 450;
+            int needed = lvl * 1000 + (int) Math.pow(lvl - 1, 2) * 450;
             if (experience >= needed) {
                 lvl++;
             } else {
@@ -70,7 +73,7 @@ public class Hero
     }
 
     // moves hero to starting position
-    protected void start(Board b)
+    protected void moveToStart(Board b)
     {
         this.position = new Point(b.size / 2, b.size / 2);
     }

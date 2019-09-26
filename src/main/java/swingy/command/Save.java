@@ -2,11 +2,11 @@ package swingy.command;
 
 import swingy.Game;
 
-public class Exit implements GameCommand
+public class Save implements GameCommand
 {
     @Override
     public void run(Game game)
     {
-        System.exit(0);
+        game.db.saveHero(game.view(), game.hero());
     }
 }

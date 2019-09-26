@@ -30,14 +30,14 @@ public class Print implements GameCommand
             builder.append("\n");
         }
         builder.append(String.format(
-            "You are %s the level %d %s with a total health of %d\n" +
-            "On your head you wield a %s with a health of %d\n" +
-            "On your person you wield a %s with an armor of %d\n" +
-            "In your hands you wield a %s with a power of %d\n",
-            h.name, h.level(), h.profession, h.health(),
-            h.helm.name, h.helm.health,
-            h.armor.name, h.armor.armor,
-            h.weapon.name, h.weapon.power
+                "You are %s the level %d %s with a total health of %d\n" +
+                        "On your head you wield a %s with a health of %d\n" +
+                        "On your person you wield a %s with an armor of %d\n" +
+                        "In your hands you wield a %s with a power of %d\n",
+                h.name, h.level(), h.profession, h.health(),
+                h.helm.name, h.helm.health,
+                h.armor.name, h.armor.armor,
+                h.weapon.name, h.weapon.power
         ));
         game.view().messageUser(builder.toString());
     }

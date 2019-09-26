@@ -16,40 +16,48 @@ public class ConsoleView implements GameView
     }
 
     @Override
-    public String promptUser(String prompt) {
+    public String promptUser(String prompt)
+    {
         System.out.println(prompt);
         return scanner.nextLine();
     }
 
     @Override
-    public void messageUser(String msg) {
+    public void messageUser(String msg)
+    {
         System.out.println(msg);
     }
 
     @Override
-    public void updateHeroData(Hero h) {
+    public void updateHeroData(Hero h)
+    {
     }
 
     @Override
-    public void updateBoardData(Board b, Hero h) {
+    public void updateBoardData(Board b, Hero h)
+    {
     }
 
     @Override
-    public void clearScreen() {
+    public void clearScreen()
+    {
         System.out.println("Clearing!");
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
     @Override
-    public void lock() {
+    public void lock()
+    {
     }
 
     @Override
-    public void hide() {
+    public void hide()
+    {
     }
 
     @Override
-    public void show() {
+    public void show()
+    {
     }
 }

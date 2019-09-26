@@ -2,7 +2,6 @@ package swingy.enemy;
 
 import swingy.Hero;
 
-import java.awt.*;
 import java.util.Random;
 
 public class EnemyFactory
