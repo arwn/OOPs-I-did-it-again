@@ -72,7 +72,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                swingy.Swingy
+                                swingy.Main
                             </mainClass>
                         </manifest>
                     </archive>
